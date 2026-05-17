@@ -3,6 +3,7 @@ import { lazy, Suspense } from "react";
 import { createBrowserRouter, Navigate, useOutletContext } from "react-router-dom";
 import App from "./App";
 import { safeStorageGet } from "./utils/storage";
+import Cargando from "./components/Cargando";
 const Servicios = lazy(() => import("./components/Servicios"));
 const Nosotros = lazy(() => import("./components/Nosotros"));
 const Contacto = lazy(() => import("./components/Contacto"));
@@ -14,7 +15,7 @@ const ConfigurarServicios = lazy(() => import("./components/configuraciones/Conf
 
 // ✅ HOC para envolver cualquier componente con Suspense
 const withSuspense = (Component) => (
-    <Suspense fallback={null}>
+    <Suspense fallback={<Cargando />}>
         <Component />
     </Suspense>
 );
@@ -34,7 +35,7 @@ const ProtectedRoute = ({ children }) => {
 function HomeWrapper() {
     const { informationsRef, setVideoReady } = useOutletContext();
     return (
-        <Suspense fallback={null}>
+        <Suspense fallback={<Cargando />}>
             <Home informationsRef={informationsRef} setVideoReady={setVideoReady} />
         </Suspense>
     );

@@ -46,14 +46,21 @@ const Nosotros = () => {
         pb: 3.5,
         position: "relative",
         overflow: "hidden",
-        backgroundImage: "url(fondo-blizz-2.webp)",
+        backgroundImage: "url(/fondo-blizz.avif)",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundAttachment: "fixed",
         backgroundPosition: "center",
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          inset: 0,
+          background: "rgba(0, 0, 0, 0.18)",
+          pointerEvents: "none",
+        },
       }}
     >
-      <Box textAlign="center" mb={4}>
+      <Box textAlign="center" mb={4} sx={{ position: "relative", zIndex: 1 }}>
         <Typography
           variant={isMobile ? "h5" : "h3"}
           fontWeight={700}
@@ -61,6 +68,8 @@ const Nosotros = () => {
             color: "white",
             display: "inline-flex",
             position: "relative",
+            fontSize: { xs: "1.8rem", sm: "2.1rem", md: "2.4rem" },
+            letterSpacing: "0.02em",
             "&::after": {
               content: '""',
               position: "absolute",
@@ -82,7 +91,7 @@ const Nosotros = () => {
         </Typography>
       </Box>
 
-      <Box maxWidth="1200px" mx="auto">
+      <Box maxWidth="1200px" mx="auto" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={6} alignItems="center">
           <Grid item xs={12} md={6}>
             <Box px={{ xs: 2, sm: 0 }}>
@@ -95,22 +104,22 @@ const Nosotros = () => {
                 <Card sx={{ backgroundColor: "rgba(255,255,255,0.05)", backdropFilter: "blur(10px)", borderRadius: 3, p: 2 }}>
                   <CardContent>
                     <Typography variant="h5" color="white" gutterBottom>
-                      ¿Quiénes Somos?
+                      Soluciones tecnicas e industriales
                     </Typography>
 
                     <Typography variant="body2" sx={{ color: "#ccc", textAlign: "justify", mb: 2 }}>
-                      Somos una empresa de servicios técnicos e ingeniería industrial orientada a empresas, franquicias, cadenas
-                      gastronómicas y municipalidades.
+                      Especialistas en mantencion industrial, reparacion de maquinaria gastronomica, electricidad,
+                      ingenieria y obras civiles para empresas y sector publico.
                     </Typography>
 
                     <Typography variant="body2" sx={{ color: "#ccc", textAlign: "justify", mb: 2 }}>
-                      Desarrollamos electricidad industrial, mantención preventiva y correctiva, reparación de maquinaria
-                      gastronómica y obras civiles con foco en continuidad operativa, seguridad y orden técnico.
+                      Entregamos un servicio tecnico especializado, rapido y confiable, con foco en continuidad operativa,
+                      seguridad y calidad garantizada.
                     </Typography>
 
                     <Typography variant="body2" sx={{ color: "#ccc", textAlign: "justify" }}>
-                      Acompañamos a cada cliente con soporte directo, evaluación en terreno y propuestas claras para resolver
-                      necesidades reales de operación.
+                      Acompañamos cada proyecto con evaluacion en terreno, diagnostico claro y respuestas concretas para
+                      mantener la operacion en marcha.
                     </Typography>
                   </CardContent>
                 </Card>
@@ -127,7 +136,7 @@ const Nosotros = () => {
             >
               <Box textAlign="center">
                 <img
-                  src="/logo-targonex.jpeg"
+                  src="/logo-oficial.png"
                   alt="Targonex"
                   style={{ maxWidth: isMobile ? "83%" : "100%", height: "auto" }}
                 />
@@ -144,7 +153,7 @@ const Nosotros = () => {
           mt: 4,
           mb: 4,
           py: 4,
-          backgroundImage: "url(/developer-background.jpg)",
+          backgroundImage: "url(/fondo-3.avif)",
           backgroundSize: "cover",
           backgroundPosition: isMobile ? `center ${scrollY * 0.3}px` : "center",
           backgroundAttachment: isMobile ? "scroll" : "fixed",
@@ -156,7 +165,7 @@ const Nosotros = () => {
             content: '""',
             position: "absolute",
             inset: 0,
-            background: "rgba(0, 0, 0, 0.4)",
+            background: "rgba(0, 0, 0, 0.55)",
             zIndex: 1,
           },
         }}
@@ -171,12 +180,12 @@ const Nosotros = () => {
               textAlign: "right",
             }}
           >
-            Impulsamos la <span style={{ color: "#ffe037" }}>continuidad</span> de tu operación
+            Impulsamos la <span style={{ color: "#ffe037" }}>continuidad</span> de tu operacion
           </Typography>
         </Container>
       </Box>
 
-      <Box maxWidth="1200px" mx="auto" mt={2}>
+      <Box maxWidth="1200px" mx="auto" mt={2} sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={3} alignItems="flex-start">
           <Grid item xs={12} md={6}>
             <motion.div
@@ -198,7 +207,7 @@ const Nosotros = () => {
               >
                 <img
                   src="/mision-empresa.png"
-                  alt="Misión corporativa"
+                  alt="Mision corporativa"
                   style={{ maxWidth: "100%", height: "auto" }}
                 />
               </Box>
@@ -216,19 +225,19 @@ const Nosotros = () => {
                 <Card sx={{ backgroundColor: "rgba(255,255,255,0.05)", backdropFilter: "blur(10px)", borderRadius: 3, p: 3 }}>
                   <CardContent>
                     <Typography variant="h5" color="white" gutterBottom>
-                      Misión
+                      Mision
                     </Typography>
                     <Typography variant="body2" sx={{ color: "#ccc", textAlign: "left", mb: 3 }}>
-                      Entregar soluciones integrales en ingeniería industrial, electricidad y mantención técnica, garantizando
-                      operaciones seguras, ordenadas y listas para responder a las exigencias del cliente.
+                      Resolver con rapidez y criterio tecnico las necesidades de mantencion, reparacion y soporte en terreno,
+                      cuidando la continuidad de la operacion.
                     </Typography>
 
                     <Typography variant="h5" color="white" gutterBottom>
-                      Visión
+                      Vision
                     </Typography>
                     <Typography variant="body2" sx={{ color: "#ccc", textAlign: "left" }}>
-                      Ser un referente confiable en servicios industriales, obras civiles y soporte técnico para empresas,
-                      franquicias y municipalidades, con respuesta ágil y estándar profesional.
+                      Ser un aliado confiable para empresas y sector publico, reconocido por su respuesta agil, seguridad y
+                      calidad garantizada.
                     </Typography>
                   </CardContent>
                 </Card>

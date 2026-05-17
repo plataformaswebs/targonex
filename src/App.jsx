@@ -13,7 +13,7 @@ const Footer = lazy(() => import("./components/Footer"));
 const Navbar = lazy(() => import("./components/Navbar"));
 
 import { WhatsApp as WhatsAppIcon, ArrowUpward as ArrowUpwardIcon } from "@mui/icons-material";
-import { useLocation, Outlet } from "react-router-dom";
+import { useLocation, Outlet, useNavigate } from "react-router-dom";
 import Cargando from './components/Cargando';
 import { AnimatePresence, motion } from 'framer-motion';
 import "./components/css/App.css";
@@ -30,6 +30,7 @@ function App() {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const informationsRef = useRef(null);
   const location = useLocation();
+  const navigate = useNavigate();
   const [videoReady, setVideoReady] = useState(false);
   const isHome = ["/", "/inicio", ""].includes(location.pathname);
   const [showApp, setShowApp] = useState(false);
@@ -39,12 +40,22 @@ function App() {
   const [shouldAnimateInformations, setShouldAnimateInformations] = useState(false);
   const triggerInformations = (value) => setShouldAnimateInformations(value);
   const [hasSeenInformations, setHasSeenInformations] = useState(false);
-  const [isFading, setIsFading] = useState(false);
+  const [isRouteLoading, setIsRouteLoading] = useState(false);
+  const previousPathRef = useRef(location.pathname);
 
   //EFECTO CAMBIAR DE RUTA
   useEffect(() => {
-    setIsFading(true);
-    const timer = setTimeout(() => setIsFading(false), 400);
+    if (previousPathRef.current === location.pathname) {
+      return undefined;
+    }
+
+    previousPathRef.current = location.pathname;
+    setIsRouteLoading(true);
+
+    const timer = setTimeout(() => {
+      setIsRouteLoading(false);
+    }, 900);
+
     return () => clearTimeout(timer);
   }, [location.pathname]);
 
@@ -56,6 +67,25 @@ function App() {
   useEffect(() => {
     trackPageView(location.pathname + location.search); // en cada cambio de ruta
   }, [location]);
+
+  useEffect(() => {
+    if (location.pathname !== "/" || !location.state?.scrollToInformations) {
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      if (!informationsRef.current) return;
+
+      window.scrollTo({
+        top: informationsRef.current.getBoundingClientRect().top + window.scrollY - 95,
+        behavior: "smooth",
+      });
+
+      navigate(location.pathname, { replace: true });
+    }, 250);
+
+    return () => clearTimeout(timer);
+  }, [informationsRef, location.pathname, location.state, navigate]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -357,24 +387,34 @@ function App() {
           </Suspense>
         )}
 
-        {/* Transición entre páginas */}
-        <Box sx={{ position: "relative" }}>
-          <Outlet context={{ showApp, informationsRef }} />
-          {isFading && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4 }}
-              style={{
-                position: "fixed",
-                inset: 0,
-                background: "#11737C",
-                zIndex: 2000
-              }}
-            />
-          )}
-        </Box>
+      {/* Transición entre páginas */}
+      <Box sx={{ position: "relative" }}>
+        <Outlet context={{ showApp, informationsRef }} />
+        {isRouteLoading && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            style={{
+              position: "fixed",
+              inset: 0,
+              zIndex: 2001,
+            }}
+          />
+        )}
+        {isRouteLoading && (
+          <Box
+            sx={{
+              position: "fixed",
+              inset: 0,
+              zIndex: 2002,
+            }}
+          >
+            <Cargando />
+          </Box>
+        )}
+      </Box>
 
         {/* Secciones visibles solo en la página de inicio */}
         {["/", ""].includes(location.pathname) && (
@@ -410,7 +450,7 @@ function App() {
         {/* Botón WhatsApp */}
         {location.pathname !== "/administracion" && location.pathname !== "/dashboard" && location.pathname !== "/configurar-servicios" && (
           <Box sx={{ position: "fixed", bottom: "40px", right: "20px", zIndex: 100, transition: "bottom 0.3s ease", }}>
-            <IconButton onClick={() => { window.open("https://api.whatsapp.com/send?phone=5699940746", "_blank"); setHasInteracted(true); }} sx={{
+            <IconButton onClick={() => { window.open("https://api.whatsapp.com/send?phone=56997199738", "_blank"); setHasInteracted(true); }} sx={{
               width: 60, height: 60, backgroundColor: "#25d366", color: "#FFF", borderRadius: "50%", boxShadow: "2px 2px 3px #999", "&:hover": { backgroundColor: "#1ebe5d" }, zIndex: 101
             }}>
               <WhatsAppIcon sx={{ fontSize: 30 }} />

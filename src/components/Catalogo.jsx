@@ -435,7 +435,7 @@ const Catalogo = () => {
                 }}
                 onClick={() => {
                   const mensaje = `I’m interested in ${videoFullScreenProducto.NombreProducto}. Is it still available?`;
-                  const telefono = '56999440746';
+                  const telefono = '56997199738';
                   const urlWhatsapp = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
                   window.open(urlWhatsapp, '_blank');
                 }}

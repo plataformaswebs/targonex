@@ -4,7 +4,8 @@ import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, useMap, useMapEvent } from "react-leaflet";
 import L from "leaflet";
 
-const finalPosition = [-33.4489, -70.6693];
+const finalPosition = [-33.5605546, -70.5838271];
+const contactAddress = "Joaquín Tocornal 10709, La Florida";
 const mapMarkerIcon = L.divIcon({
   className: "golf-map-marker",
   html: `
@@ -102,16 +103,15 @@ function Contacto() {
         <Typography
           component="p"
           sx={{
-            margin: "4px 0 0",
-            color: "rgba(255,255,255,0.72)",
-            fontSize: { xs: "0.62rem", md: "0.7rem" },
-            fontWeight: 600,
-            letterSpacing: "0.14em",
-            textTransform: "uppercase",
+            margin: "2px 0 0",
+            color: "rgba(255,255,255,0.86)",
+            fontSize: { xs: "0.58rem", md: "0.66rem" },
+            fontWeight: 700,
+            letterSpacing: "0.08em",
             lineHeight: 1.1,
           }}
         >
-          Santiago y cobertura nacional
+          {contactAddress}
         </Typography>
       </Box>
       <Box

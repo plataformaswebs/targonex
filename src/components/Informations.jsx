@@ -295,7 +295,7 @@ function Informations() {
         className="tournament-block__premium tournament-block__premium--full"
         ref={sectionFiveRef}
         sx={{
-          background: "#ffffff",
+          background: "transparent",
         }}
       >
         <Container maxWidth={false} className="tournament-block__container tournament-block__container--premium" sx={{ px: { xs: 3, md: 6, lg: 10 } }}>
@@ -331,7 +331,7 @@ function Informations() {
             >
               <Typography
                 sx={{
-                  color: "#1f6ff0",
+                  color: "#09161d",
                   textTransform: "uppercase",
                   letterSpacing: "0.18em",
                   fontSize: "0.72rem",
@@ -371,12 +371,21 @@ function Informations() {
               </Typography>
             </Box>
 
-            <Box sx={{ overflow: "hidden", pb: 1 }}>
+            <Box
+              sx={{
+                overflow: "hidden",
+                pb: 1,
+                mx: { xs: "calc(50% - 50vw)", md: 0 },
+                width: { xs: "100vw", md: "auto" },
+              }}
+            >
               <Box
                 sx={{
                   display: "flex",
                   gap: 1.5,
                   width: "max-content",
+                  paddingLeft: { xs: 2, md: 0 },
+                  paddingRight: { xs: 2, md: 0 },
                   animation: "targonex-gallery-marquee-reverse 30s linear infinite",
                   "&:hover": { animationPlayState: "paused" },
                 }}

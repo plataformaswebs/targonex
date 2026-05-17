@@ -127,7 +127,16 @@ function Navbar({ contactoRef, informationsRef, videoReady }) {
     const actions = {
       Contacto: () => scrollToRef(contactoRef),
       Inicio: () => location.pathname !== "/" ? navigate("/") : scrollToTop(),
-      Servicios: () => navigate("/servicios"),
+      Servicios: () => {
+        if (location.pathname === "/") {
+          scrollToRef(informationsRef, -95);
+          return;
+        }
+
+        navigate("/", {
+          state: { scrollToInformations: true },
+        });
+      },
       Nosotros: () => navigate("/nosotros"),
       Presentation: handleOpenPDF
     };
@@ -492,7 +501,7 @@ function Navbar({ contactoRef, informationsRef, videoReady }) {
                       textAlign: "center",
                     }}
                   >
-                    ⚙️ Administration
+                    ⚙️ Administración
                   </Typography>
                 </Box>
               </motion.div>

@@ -21,15 +21,25 @@ const serviceLinks = [
 ];
 
 const quickLinks = [
-  { label: "Solicitar cotización", href: "https://api.whatsapp.com/send?phone=56999440746&text=Hola%2C%20quiero%20una%20cotizaci%C3%B3n%20para%20mi%20proyecto." },
-  { label: "Hablar por WhatsApp", href: "https://api.whatsapp.com/send?phone=56999440746" },
+  { label: "Solicitar cotización", href: "https://api.whatsapp.com/send?phone=56997199738&text=Hola%2C%20quiero%20una%20cotizaci%C3%B3n%20para%20mi%20proyecto." },
+  { label: "Hablar por WhatsApp", href: "https://api.whatsapp.com/send?phone=56997199738" },
   { label: "Cobertura técnica", href: "/nosotros" },
   { label: "Clientes destacados", href: "/nosotros" },
 ];
 
+const mapsUrl = "https://www.google.com/maps?q=-33.5605546,-70.5838271";
+
 const contactLinks = [
-  { label: "WhatsApp: +56 9 9994 0746", href: "https://api.whatsapp.com/send?phone=56999440746" },
-  { label: "Correo: contacto@targonex.cl", href: "mailto:contacto@targonex.cl" },
+  { label: "WhatsApp: +56 9 9719 9738", href: "https://api.whatsapp.com/send?phone=56997199738" },
+  { label: "Fono: +569 22511708", href: "tel:+56922511708" },
+  { label: "Dirección: Joaquín Tocornal 10709, La Florida", href: mapsUrl },
+  {
+    label: "Correos:",
+    emails: [
+      { label: "jmontoya@targonex.cl", href: "mailto:jmontoya@targonex.cl" },
+      { label: "Onoguera@targonex.cl", href: "mailto:Onoguera@targonex.cl" },
+    ],
+  },
   { label: "Cobertura: empresas y municipalidades", href: "/contacto" },
   { label: "Atención: terreno y coordinación técnica", href: "/contacto" },
 ];
@@ -38,7 +48,7 @@ const socials = [
   { href: "https://www.facebook.com/", label: "Facebook", Icon: FacebookIcon },
   { href: "https://www.instagram.com/", label: "Instagram", Icon: InstagramIcon },
   { href: "https://www.linkedin.com/", label: "LinkedIn", Icon: LinkedInIcon },
-  { href: "https://api.whatsapp.com/send?phone=56999440746", label: "WhatsApp", Icon: WhatsAppIcon },
+  { href: "https://api.whatsapp.com/send?phone=56997199738", label: "WhatsApp", Icon: WhatsAppIcon },
 ];
 
 function FooterColumn({ title, links }) {
@@ -51,7 +61,20 @@ function FooterColumn({ title, links }) {
       </li>
       {links.map((link) => (
         <li key={link.label}>
-          <a href={link.href}>{link.label}</a>
+          {link.emails ? (
+            <Box component="div" sx={{ display: "flex", flexDirection: "column", gap: 0.4 }}>
+              <Typography component="span" sx={{ color: "rgba(255,255,255,0.82)" }}>
+                {link.label}
+              </Typography>
+              {link.emails.map((email) => (
+                <a key={email.label} href={email.href}>
+                  {email.label}
+                </a>
+              ))}
+            </Box>
+          ) : (
+            <a href={link.href}>{link.label}</a>
+          )}
         </li>
       ))}
     </ul>
