@@ -22,15 +22,15 @@ function DetailDialog({ open, onClose, eyebrow, title, description, image, rever
       }}
     >
       <DialogContent sx={{ p: 0 }}>
-          <Box
-            sx={{
-              position: "relative",
-              px: { xs: 3, md: 4 },
-              py: { xs: 3, md: 4 },
-              background:
+        <Box
+          sx={{
+            position: "relative",
+            px: { xs: 3, md: 4 },
+            py: { xs: 3, md: 4 },
+            background:
               "linear-gradient(135deg, rgba(59,134,255,0.12) 0%, rgba(31,111,240,0.05) 55%, rgba(255,255,255,0.9) 100%)",
-            }}
-          >
+          }}
+        >
           <IconButton
             onClick={onClose}
             sx={{
@@ -45,10 +45,10 @@ function DetailDialog({ open, onClose, eyebrow, title, description, image, rever
             <CloseRoundedIcon />
           </IconButton>
 
-            <Typography
-              component="p"
-              sx={{
-                m: 0,
+          <Typography
+            component="p"
+            sx={{
+              m: 0,
               color: "#1f6ff0",
               fontSize: "0.8rem",
               fontWeight: 800,
@@ -161,7 +161,7 @@ function Informations() {
     return () => window.removeEventListener("scroll", handleScrollReveal);
   }, [sectionOneInView, sectionThreeInView]);
 
-  const gallery = ["/area-10.jpg", "/area-11.jpg", "/area-12.jpg", "/area-13.jpg", "/area-14.jpg", "/area-15.jpg"];
+  const gallery = ["/area-10.jpg", "/area-15.jpg", "/area-12.jpg", "/area-13.jpg", "/area-14.jpg", "/area-20.png"];
   const galleryLoop = [...gallery, ...gallery];
 
   return (
@@ -178,8 +178,8 @@ function Informations() {
                 fontSize: { xs: "1.95rem", sm: "2.3rem", md: "2.8rem" },
                 fontFamily: '"Roboto Condensed", "Roboto-BoldCondensed", sans-serif',
               }}
-              >
-                <Box component="span" sx={{ display: { xs: "inline", md: "block" } }}>
+            >
+              <Box component="span" sx={{ display: { xs: "inline", md: "block" } }}>
                 INGENIERÍA Y
               </Box>
               <Box component="span" sx={{ display: { xs: "inline", md: "block" } }}>
@@ -210,7 +210,7 @@ function Informations() {
           ref={sectionTwoRef}
         >
           <Box className="tournament-block__community-image-wrap">
-            <img src="/area-16.jpg" alt="Ingeniería industrial" className="tournament-block__community-image" />
+            <img src="/area-15.jpg" alt="Ingeniería industrial" className="tournament-block__community-image" />
           </Box>
 
           <Box className="tournament-block__community-copy">
@@ -223,12 +223,12 @@ function Informations() {
                 fontSize: { xs: "2rem", sm: "2.25rem", md: "2.7rem" },
               }}
             >
-              ELECTRICIDAD INDUSTRIAL
+              REPARACIÓN DE MOBILIARIO
             </Typography>
 
             <Typography component="p" className="tournament-block__community-description">
-              Instalaciones eléctricas, tableros, correcciones y mantención preventiva para instalaciones que no pueden detenerse.
-              Diseñamos soluciones seguras y ordenadas para operaciones exigentes.
+              Reparación y mantención de mobiliario comercial, vitrinas y equipamiento para tiendas, con atención
+              ordenada, rápida y enfocada en mantener tus espacios operativos.
             </Typography>
 
             <Button variant="contained" className="tournament-block__button" onClick={() => setOpenDialog("electricidad")}>
@@ -283,7 +283,7 @@ function Informations() {
               </Box>
 
               <Box className="tournament-block__premium-action">
-                <Button variant="contained" className="tournament-block__button" onClick={() => setOpenDialog("mantencion") }>
+                <Button variant="contained" className="tournament-block__button" onClick={() => setOpenDialog("mantencion")}>
                   Ver plan de mantenimiento
                 </Button>
               </Box>

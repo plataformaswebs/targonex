@@ -38,7 +38,7 @@ const sections = [
     title: "Electricidad industrial, instalaciones y mantención técnica",
     description:
       "Desarrollo de instalaciones eléctricas, tableros, correcciones y mantención preventiva y correctiva para operaciones que necesitan continuidad, seguridad y cumplimiento técnico.",
-    image: "/area-15.jpg",
+    image: "/area-21.jpg",
     alt: "Electricidad industrial",
     button: "Ver soluciones eléctricas",
     dialogId: "electricidad",
@@ -50,7 +50,7 @@ const sections = [
     title: "Obras civiles, paraderos y servicios para municipalidades",
     description:
       "Ejecución de obras menores, instalación de paraderos, mejoras en infraestructura y trabajos de soporte para empresas y sector público, con foco en orden, plazos y calidad de terminación.",
-    image: "/area-2.jpeg",
+    image: "/area-16.jpg",
     alt: "Obras civiles y servicios municipales",
     button: "Conocer cobertura",
     dialogId: "obras",
@@ -345,7 +345,7 @@ function Features() {
         eyebrow="Electricidad industrial"
         title="Instalaciones, tableros y continuidad eléctrica"
         description="Diseñamos, corregimos y mantenemos sistemas eléctricos para entornos industriales y comerciales. Priorizamos seguridad, orden de ejecución y continuidad operacional en cada intervención."
-        images={["/area-12.jpg", "/area-13.jpg"]}
+        images={["/area-14.jpg", "/area-15.jpg"]}
       />
 
       <FeatureDialog
@@ -354,7 +354,7 @@ function Features() {
         eyebrow="Obras civiles y sector público"
         title="Montaje, paraderos e infraestructura para municipalidades"
         description="Ejecución de obras menores, instalación de elementos urbanos y soporte técnico para proyectos de empresas y municipalidades, con una mirada práctica, ordenada y orientada a resultados."
-        images={["/area-14.jpg", "/area-15.jpg"]}
+        images={["/area-12.jpg", "/area-13.jpg"]}
       />
     </Box>
   );
